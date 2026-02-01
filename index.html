@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PulseTrack Fitness</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div>
+          <p class="eyebrow">Fitness Tracking Dashboard</p>
+          <h1>PulseTrack</h1>
+          <p class="subtitle">
+            Log workouts, calories, and weight in one place. Your recent entries are
+            saved automatically.
+          </p>
+        </div>
+        <div class="summary">
+          <div>
+            <span class="label">Total workouts</span>
+            <span class="value" id="summary-workouts">0</span>
+          </div>
+          <div>
+            <span class="label">Calories logged</span>
+            <span class="value" id="summary-calories">0</span>
+          </div>
+          <div>
+            <span class="label">Latest weight</span>
+            <span class="value" id="summary-weight">--</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel">
+          <h2>Create a workout</h2>
+          <form id="workout-form">
+            <label>
+              Workout name
+              <input type="text" name="name" placeholder="Upper body strength" required />
+            </label>
+            <label>
+              Duration (minutes)
+              <input type="number" name="duration" min="5" step="5" placeholder="45" required />
+            </label>
+            <label>
+              Intensity
+              <select name="intensity" required>
+                <option value="">Select</option>
+                <option>Low</option>
+                <option>Moderate</option>
+                <option>High</option>
+              </select>
+            </label>
+            <label>
+              Notes
+              <textarea name="notes" rows="2" placeholder="Focus on form, track PRs"></textarea>
+            </label>
+            <button type="submit">Add workout</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Log calories</h2>
+          <form id="calorie-form">
+            <label>
+              Meal / Snack
+              <input type="text" name="meal" placeholder="Post-workout shake" required />
+            </label>
+            <label>
+              Calories
+              <input type="number" name="calories" min="0" step="10" placeholder="350" required />
+            </label>
+            <label>
+              Time
+              <input type="time" name="time" />
+            </label>
+            <button type="submit">Add calories</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Track weight</h2>
+          <form id="weight-form">
+            <label>
+              Weight (lbs)
+              <input type="number" name="weight" min="0" step="0.1" placeholder="165.4" required />
+            </label>
+            <label>
+              Date
+              <input type="date" name="date" required />
+            </label>
+            <label>
+              Notes
+              <textarea name="notes" rows="2" placeholder="Morning weigh-in"></textarea>
+            </label>
+            <button type="submit">Add weight entry</button>
+          </form>
+        </section>
+      </main>
+
+      <section class="activity">
+        <div class="activity-header">
+          <h2>Recent activity</h2>
+          <button type="button" id="clear-all" class="ghost">Clear all</button>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Workouts</h3>
+            <ul id="workout-list" class="list"></ul>
+          </div>
+          <div class="card">
+            <h3>Calories</h3>
+            <ul id="calorie-list" class="list"></ul>
+          </div>
+          <div class="card">
+            <h3>Weight</h3>
+            <ul id="weight-list" class="list"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
